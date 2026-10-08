@@ -18,7 +18,11 @@ namespace PokeDex_Web
          
          ListaPokemons = negocio.listarconSP() ; 
 
-      
+         repRepetidor.DataSource = ListaPokemons ;
+
+         repRepetidor.DataBind() ;
+
+
 
         }
     }

@@ -22,7 +22,7 @@
 
 
 
-        <% 
+ <%-- %>       <% 
                foreach(DominioPokemon.Pokemon poke in ListaPokemons) {
 
                %>
@@ -55,9 +55,43 @@
 
         </div>
 
+               <% }  %> --%>
 
 
-               <% }  %>
+        <asp:Repeater ID="repRepetidor" runat="server">
+
+            <ItemTemplate>
+
+                    <div class="col">
+
+                            <div class="card h-100 bg-secondary text-white shadow">
+
+                                <!-- Imagen del Pokémon (podes usar una URL o un DataBind de ASP.NET) -->
+
+                                <img src="<%#Eval("ImagenUrl") %>" class="card-img-top p-3 bg-dark" alt="Pikachu" style="height: 200px; object-fit: contain;">
+        
+                                <div class="card-body d-flex flex-column">
+
+                                    <h5 class="card-title"> <%#Eval("Nombre") %></h5>
+
+                                    <p class="card-text flex-grow-1"><%#Eval("Descripcion") %> </p>
+
+                                    <a style="color: inherit ;" href="DetallePokemon.aspx?id=<%#Eval("Id") %>" > Detalle </a>
+            
+                                    <!-- Botón de acción con etiqueta ASP.NET o HTML -->
+
+                                    <a href="#" class="btn btn-dark mt-auto">Ver Detalle</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+            </ItemTemplate>
+
+
+        </asp:Repeater>
 
 
               
