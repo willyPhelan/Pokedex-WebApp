@@ -18,11 +18,19 @@ namespace PokeDex_Web
          
          ListaPokemons = negocio.listarconSP() ; 
 
+         if(!IsPostBack){
+
          repRepetidor.DataSource = ListaPokemons ;
 
-         repRepetidor.DataBind() ;
+         repRepetidor.DataBind() ; }
 
 
+
+        }
+
+        protected void btnEjemplo_Click(object sender, EventArgs e) {
+        
+            string valor = ((Button)sender).CommandArgument ; 
 
         }
     }
