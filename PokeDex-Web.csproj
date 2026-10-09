@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="DetallePokemon.aspx" />
+    <Content Include="Ejemplos con DownLists\DropdownEjemplos.aspx" />
     <Content Include="PokemonLista.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -86,6 +87,13 @@
     </Compile>
     <Compile Include="DetallePokemon.aspx.designer.cs">
       <DependentUpon>DetallePokemon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ejemplos con DownLists\DropdownEjemplos.aspx.cs">
+      <DependentUpon>DropdownEjemplos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ejemplos con DownLists\DropdownEjemplos.aspx.designer.cs">
+      <DependentUpon>DropdownEjemplos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>

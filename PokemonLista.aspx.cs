@@ -14,10 +14,50 @@ namespace PokeDex_Web
 
         PokemonNegocio negocio = new PokemonNegocio() ;
 
+        if (!IsPostBack) {
+        // Solo carga la primera vez que entra a la página
+
         dgvPokemons.DataSource = negocio.listarconSP() ;
 
-        dgvPokemons.DataBind() ;
+        dgvPokemons.DataBind() ;  }  }
 
-        }
+        protected void dgvPokemons_RowCommand(object sender, GridViewCommandEventArgs e) {
+
+           if (e.CommandName == "PokemonModificar"){
+
+                    string id = e.CommandArgument.ToString() ;
+        
+                    // Redirige al formulario de detalle pasando el ID por URL
+            
+                    Response.Redirect("DetallePokemon.aspx?id=" + id, false) ;
+    }
+}
+
+
+
+protected void dgvPokemons_PageIndexChanging(object sender, GridViewPageEventArgs e){
+
+    // Asigna la nueva página seleccionada por el usuario
+
+    dgvPokemons.PageIndex = e.NewPageIndex;
+    
+    // Vuelve a cargar la lista para refrescar los datos de la página actual
+
+    PokemonNegocio negocio = new PokemonNegocio();
+
+            dgvPokemons.DataSource = negocio.listarconSP();
+
+            dgvPokemons.DataBind();
+
+}
+
+protected void btnAgregar_Click(object sender, EventArgs e)
+{
+    Response.Redirect("DetallePokemon.aspx", false);
+}
+
+
+
+
     }
 }

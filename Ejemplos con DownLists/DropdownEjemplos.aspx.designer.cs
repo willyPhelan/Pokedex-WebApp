@@ -11,88 +11,88 @@ namespace PokeDex_Web
 {
 
 
-    public partial class DetallePokemon
+    public partial class DropdownEjemplos
     {
 
         /// <summary>
-        /// txtId control.
+        /// ddlColores control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtId;
+        protected global::System.Web.UI.WebControls.DropDownList ddlColores;
 
         /// <summary>
-        /// txtNumero control.
+        /// btnEnviar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumero;
+        protected global::System.Web.UI.WebControls.Button btnEnviar;
 
         /// <summary>
-        /// txtNombre control.
+        /// lblResultado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::System.Web.UI.WebControls.Label lblResultado;
 
         /// <summary>
-        /// txtDescripcion control.
+        /// ddlTiposBD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTiposBD;
 
         /// <summary>
-        /// txtImagenUrl control.
+        /// btnAceptarBD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImagenUrl;
+        protected global::System.Web.UI.WebControls.Button btnAceptarBD;
 
         /// <summary>
-        /// ddlTipo control.
+        /// lblResultadoBD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
+        protected global::System.Web.UI.WebControls.Label lblResultadoBD;
 
         /// <summary>
-        /// ddlDebilidad control.
+        /// ddlElementosCascada control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDebilidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddlElementosCascada;
 
         /// <summary>
-        /// btnAceptar control.
+        /// ddlPokemonsCascada control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAceptar;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPokemonsCascada;
 
         /// <summary>
-        /// btnCancelar control.
+        /// lblResultadoCascada control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.Label lblResultadoCascada;
     }
 }
