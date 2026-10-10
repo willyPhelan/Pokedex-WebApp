@@ -15,6 +15,15 @@ namespace PokeDex_Web
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// ddlColores control.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace PokeDex_Web
         protected global::System.Web.UI.WebControls.Label lblResultadoBD;
 
         /// <summary>
+        /// UpdatePanelCascada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelCascada;
+
+        /// <summary>
         /// ddlElementosCascada control.
         /// </summary>
         /// <remarks>
@@ -94,5 +112,41 @@ namespace PokeDex_Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResultadoCascada;
+
+        /// <summary>
+        /// UpdatePanelImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelImagen;
+
+        /// <summary>
+        /// txtImagenUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImagenUrl;
+
+        /// <summary>
+        /// btnCargarImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCargarImagen;
+
+        /// <summary>
+        /// imgPokemonPreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPokemonPreview;
     }
 }

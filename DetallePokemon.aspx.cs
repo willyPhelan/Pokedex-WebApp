@@ -7,49 +7,68 @@ using System.Web.UI.WebControls;
 using DominioPokemon;
 using NegocioPokemon;
 
-namespace PokeDex_Web
+namespace PokeDex_Web 
 {
-    public partial class DetallePokemon : System.Web.UI.Page
+    public partial class DetallePokemon : System.Web.UI.Page 
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e) 
         {
-            if (!IsPostBack)
+            try 
             {
-                // Cargar los desplegables de Tipos y Debilidades
-                ElementoNegocio elementoNegocio = new ElementoNegocio();
-                ddlTipo.DataSource = elementoNegocio.listar();
-                ddlTipo.DataValueField = "Id";
-                ddlTipo.DataTextField = "Descripcion";
-                ddlTipo.DataBind();
-
-                ddlDebilidad.DataSource = elementoNegocio.listar();
-                ddlDebilidad.DataValueField = "Id";
-                ddlDebilidad.DataTextField = "Descripcion";
-                ddlDebilidad.DataBind();
-
-                // Configurar si viene un ID por parámetro (Modificación)
-                if (Request.QueryString["id"] != null)
+                if (!IsPostBack) 
                 {
-                    int id = int.Parse(Request.QueryString["id"].ToString());
-                    PokemonNegocio negocio = new PokemonNegocio();
-                    List<Pokemon> lista = negocio.listar();
-                    Pokemon seleccionado = lista.FirstOrDefault(x => x.Id == id);
+                    // Cargar los desplegables de Tipos y Debilidades
+                    ElementoNegocio elementoNegocio = new ElementoNegocio();
+                    ddlTipo.DataSource = elementoNegocio.listar();
+                    ddlTipo.DataValueField = "Id";
+                    ddlTipo.DataTextField = "Descripcion";
+                    ddlTipo.DataBind();
 
-                    if (seleccionado != null)
+                    ddlDebilidad.DataSource = elementoNegocio.listar();
+                    ddlDebilidad.DataValueField = "Id";
+                    ddlDebilidad.DataTextField = "Descripcion";
+                    ddlDebilidad.DataBind();
+
+                    // Configurar si viene un ID por parámetro (Modificación)
+                    string id = Request.QueryString["id"];
+
+                    if (!string.IsNullOrEmpty(id)) 
                     {
-                        txtId.Text = seleccionado.Id.ToString();
-                        txtNumero.Text = seleccionado.Numero.ToString();
-                        txtNombre.Text = seleccionado.Nombre;
-                        txtDescripcion.Text = seleccionado.Descripcion;
-                        txtImagenUrl.Text = seleccionado.ImagenUrl;
-                        
-                        if (seleccionado.Tipo != null)
-                            ddlTipo.SelectedValue = seleccionado.Tipo.Id.ToString();
-                        
-                        if (seleccionado.Debilidad != null)
-                            ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString();
-                    }
+                        PokemonNegocio negocio = new PokemonNegocio();
+                        Pokemon seleccionado = negocio.listar(id)[0];
+
+                        // Precarga de campos a modificar 
+                        txtId.Text = id;
+                        txtNombre.Text = seleccionado.Nombre; 
+                        txtDescripcion.Text = seleccionado.Descripcion; 
+                        txtImagenUrl.Text = seleccionado.ImagenUrl; 
+                        txtNumero.Text = seleccionado.Numero.ToString(); 
+                        ddlTipo.SelectedValue = seleccionado.Tipo.Id.ToString();
+                        ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString(); 
+
+                        txtImagenUrl_TextChanged(sender, e); 
+                    } 
                 }
+            } 
+            catch (Exception ex) 
+            { 
+                Session.Add("error", ex.Message); 
+                throw ex; 
+            } 
+        }
+
+        // Evento que se dispara automáticamente al cambiar el texto de la URL (gracias al AutoPostBack)
+        protected void txtImagenUrl_TextChanged(object sender, EventArgs e) 
+        {
+            string url = txtImagenUrl.Text.Trim();
+
+            if (!string.IsNullOrEmpty(url)) 
+            {
+                imgPokemon.ImageUrl = url;
+            }
+            else
+            {
+                imgPokemon.ImageUrl = "https://via.placeholder.com/200?text=Sin+Imagen";
             }
         }
 
@@ -71,20 +90,20 @@ namespace PokeDex_Web
                 nuevo.Debilidad = new Elemento();
                 nuevo.Debilidad.Id = int.Parse(ddlDebilidad.SelectedValue);
 
-                if (txtId.Text != "")
+                if (Request.QueryString["id"] != null) 
                 {
                     // Si tiene ID, es una modificación
                     nuevo.Id = int.Parse(txtId.Text);
-                    negocio.modificar(nuevo);
-                }
-                else
+                    negocio.modificarConSp(nuevo);
+                } 
+                else 
                 {
                     // Si no tiene ID, es un alta nueva
-                    negocio.agregar(nuevo);
+                    negocio.agregarconSP(nuevo);
                 }
 
                 Response.Redirect("PokemonLista.aspx", false);
-            }
+            } 
             catch (Exception ex)
             {
                 throw ex;

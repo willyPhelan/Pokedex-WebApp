@@ -20,7 +20,7 @@
         
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
-                <asp:Button ID="btnAccion" runat="server" Text="Ver" CssClass="btn btn-primary btn-sm px-3" CommandName="PokemonModificar" CommandArgument='<%# Eval("Id") %>' />
+                <asp:Button ID="btnAccion" runat="server" Text="Ver/Modificar" CssClass="btn btn-primary btn-sm px-3" CommandName="PokemonModificar" CommandArgument='<%# Eval("Id") %>' />
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>

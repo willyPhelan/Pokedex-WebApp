@@ -1,9 +1,11 @@
 ﻿<%@ Page Title="Detalle Pokémon" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="DetallePokemon.aspx.cs" Inherits="PokeDex_Web.DetallePokemon" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+    <!-- ScriptManager obligatorio para que funcione el UpdatePanel -->
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -34,11 +36,26 @@
                             <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" />
                         </div>
 
-                        <!-- Campo ImagenUrl -->
+                        <!-- Campo de la URL de la imagen con AutoPostBack -->
                         <div class="mb-3">
-                            <label for="txtImagenUrl" class="form-label">URL de Imagen</label>
-                            <asp:TextBox ID="txtImagenUrl" runat="server" CssClass="form-control" />
+                            <label for="txtImagenUrl" class="form-label">URL de la Imagen:</label>
+                            <asp:TextBox ID="txtImagenUrl" runat="server" CssClass="form-control" 
+                                AutoPostBack="true" OnTextChanged="txtImagenUrl_TextChanged" 
+                                placeholder="https://ejemplo.com/imagen.jpg">
+                            </asp:TextBox>
                         </div>
+
+                        <!-- UpdatePanel para la previsualización en tiempo real sin recargar toda la página -->
+                        <asp:UpdatePanel ID="UpdatePanelImagen" runat="server">
+                            <ContentTemplate>
+                                <div class="mb-3 text-center">
+                                    <asp:Image ID="imgPokemon" runat="server" 
+                                        CssClass="img-fluid rounded border border-light mt-2" 
+                                        Style="max-height: 250px; object-fit: contain;" 
+                                        ImageUrl="https://via.placeholder.com/200?text=Sin+Imagen" />
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
 
                         <!-- Campo Tipo -->
                         <div class="mb-3">
@@ -57,6 +74,11 @@
                             <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn btn-primary px-4" OnClick="btnAceptar_Click" />
                             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger px-4" OnClick="btnCancelar_Click" CausesValidation="false" />
                         </div>
+
+                        <!-- Contenedor para alertas de error -->
+                        <asp:Panel ID="pnlError" runat="server" Visible="false" CssClass="alert alert-danger" role="alert">
+                            <asp:Label ID="lblError" runat="server" Text="" />
+                        </asp:Panel>
 
                     </div>
                 </div>
