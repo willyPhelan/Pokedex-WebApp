@@ -128,22 +128,45 @@ namespace PokeDex_Web
             ConfirmaEliminacion = true; 
         }
 
-        protected void btnConfirmarEliminacion_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        protected void btnConfirmarEliminacion_Click(object sender, EventArgs e){
+            try {
                 if (chkConfirmaEliminacion.Checked)
                 {
                     PokemonNegocio negocio = new PokemonNegocio();
-                    negocio.eliminarLogico(int.Parse(txtId.Text)); 
-                    Response.Redirect("PokemonLista.aspx", false);
+
+                    negocio.eliminarLogico(int.Parse(txtId.Text)); // paso el id
+
+                    Response.Redirect("PokemonLista.aspx", false); // redirigo
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
+
                 Session.Add("error", ex.Message);
+
                 throw ex;
             }
+        }
+
+
+        protected void btnInactivar_Click(object sender, EventArgs e){
+
+        try {
+
+            PokemonNegocio negocio = new PokemonNegocio() ;
+
+            negocio.eliminarLogico(int.Parse(txtId.Text)) ; 
+
+            Response.Redirect("PokemonLista.aspx") ; 
+           
+            } catch(Exception ex){
+            
+                Session.Add("error", ex) ; 
+                
+            }
+
+        
+
+
         }
     }
 }
