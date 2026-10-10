@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../App Pokemon/DominioPokemon/DominioPokemon.csproj" Id="44015cdb-8531-4105-9bb1-5ec67b6d7093" />
+  <Project Path="../App Pokemon/NegocioPokemon/NegocioPokemon.csproj" Id="00ae9933-2055-4625-8cf3-a378c0b1c8ab" />
+  <Project Path="PokeDex-Web/PokeDex-Web.csproj" Id="afad9388-01db-490e-8e81-478c629f06d9" />
+</Solution>
