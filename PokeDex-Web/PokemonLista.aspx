@@ -1,13 +1,37 @@
 ﻿<%@ Page Title="Lista de Pokémon" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="PokemonLista.aspx.cs" Inherits="PokeDex_Web.PokemonLista" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container mt-4">
 
         <h1 class="text-white mb-3">Lista de Pokemons</h1>
+
         <hr class="text-white" />
         
+
+        <div class="row">
+
+            <div class="col-6">
+
+                <div class="mb-3">
+
+            
+                    <asp:Label Text="Filtrar" runat="server" />
+
+                    <asp:TextBox runat="server" ID="txtFiltro" AutoPostBack="true" OnTextChanged="filtro_TextChaged"></asp:TextBox>
+
+        </div>
+
+        </div>
+
+        </div>
+
+
+
+
         <!-- GridView con estilos de Bootstrap Dark -->
         <asp:GridView ID="dgvPokemons" runat="server" CssClass="table table-dark table-striped align-middle shadow" AutoGenerateColumns="false" 
             AllowPaging="true" PageSize="5" OnPageIndexChanging="dgvPokemons_PageIndexChanging" OnRowCommand="dgvPokemons_RowCommand">
@@ -22,6 +46,7 @@
                         <asp:Button ID="btnAccion" runat="server" Text="Ver/Modificar" CssClass="btn btn-primary btn-sm px-3" CommandName="PokemonModificar" CommandArgument='<%# Eval("Id") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
+
             </Columns>
         </asp:GridView>
 

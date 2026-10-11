@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NegocioPokemon  ;
+using DominioPokemon ; 
 
 namespace PokeDex_Web
 {
@@ -14,10 +15,13 @@ namespace PokeDex_Web
 
         PokemonNegocio negocio = new PokemonNegocio() ;
 
+        Session.Add("listaPokemons", negocio.listarconSP()) ; 
+
         if (!IsPostBack) {
+
         // Solo carga la primera vez que entra a la página
 
-        dgvPokemons.DataSource = negocio.listarconSP() ;
+        dgvPokemons.DataSource = Session["listaPokemons"] ;
 
         dgvPokemons.DataBind() ;  }  }
 
@@ -51,10 +55,23 @@ protected void dgvPokemons_PageIndexChanging(object sender, GridViewPageEventArg
 
 }
 
-protected void btnAgregar_Click(object sender, EventArgs e)
-{
-    Response.Redirect("DetallePokemon.aspx", false);
+protected void btnAgregar_Click(object sender, EventArgs e) {
+
+    Response.Redirect("DetallePokemon.aspx", false) ;
 }
+
+protected void filtro_TextChaged(object sender, EventArgs e){
+
+    List<Pokemon> lista = (List<Pokemon>)Session["listaPokemons"] ;
+
+    List<Pokemon> listafiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper())) ; 
+
+    dgvPokemons.DataSource = listafiltrada ;
+    
+    dgvPokemons.DataBind() ;
+
+        }
+
 
 
 
