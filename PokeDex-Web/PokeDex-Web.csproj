@@ -70,6 +70,7 @@
     <Content Include="Default.aspx" />
     <Content Include="DetallePokemon.aspx" />
     <Content Include="Ejemplos con DownLists\DropdownEjemplos.aspx" />
+    <Content Include="Inactivos.aspx" />
     <Content Include="PokemonLista.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="Ejemplos con DownLists\DropdownEjemplos.aspx.designer.cs">
       <DependentUpon>DropdownEjemplos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inactivos.aspx.cs">
+      <DependentUpon>Inactivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inactivos.aspx.designer.cs">
+      <DependentUpon>Inactivos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>

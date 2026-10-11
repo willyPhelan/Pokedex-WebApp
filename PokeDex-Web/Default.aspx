@@ -80,9 +80,9 @@
             
                                     <!-- Botón de acción con etiqueta ASP.NET o HTML -->
 
-                                    <a href="#" class="btn btn-dark mt-auto">Ver Detalle</a>
+                            <!--         <a href="#" class="btn btn-dark mt-auto">Ver Detalle</a>
     
-                                    <asp:Button Text="Ejemplo" CssClass="btn btn-primary" runat="server" ID="btnEjemplo" CommandArgument='<%#Eval("Id") %>' CommandName="PoekmonId" OnClick="btnEjemplo_Click" /> 
+                                    <asp:Button Text="Ejemplo" CssClass="btn btn-primary" runat="server" ID="btnEjemplo" CommandArgument='<%#Eval("Id") %>' CommandName="PoekmonId" OnClick="btnEjemplo_Click" /> -->
 
                 </div>
 

@@ -11,7 +11,9 @@ namespace PokeDex_Web
 {
     public partial class DetallePokemon : System.Web.UI.Page 
     {
-        public bool ConfirmaEliminacion { get; set; }
+        public bool ConfirmaEliminacion { get; set ; }
+
+
 
         protected void Page_Load(object sender, EventArgs e)  
         {
@@ -45,6 +47,10 @@ namespace PokeDex_Web
                         PokemonNegocio negocio = new PokemonNegocio();
                         Pokemon seleccionado = negocio.listar(id)[0];
 
+
+                        Session.Add("pokeSeleccionado", seleccionado) ;
+
+
                         // Precarga de campos a modificar 
                         txtId.Text = id;
                         txtNombre.Text = seleccionado.Nombre; 
@@ -55,6 +61,11 @@ namespace PokeDex_Web
                         ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString(); 
 
                         txtImagenUrl_TextChanged(sender, e); 
+
+                        // configurar acciones 
+                        if(!seleccionado.Activo){
+
+                        btnInactivar.Text = "Reactivar " ; }
                     } 
                 }
             } 
@@ -153,6 +164,8 @@ namespace PokeDex_Web
         try {
 
             PokemonNegocio negocio = new PokemonNegocio() ;
+
+         //   Pokemon seleccionado  = (Pokemon)Session["pokeSeleccionado"] ;
 
             negocio.eliminarLogico(int.Parse(txtId.Text)) ; 
 

@@ -34,6 +34,7 @@
                         </div>
 
                         <!-- Campo Descripción -->
+
                         <div class="mb-3">
                             <label for="txtDescripcion" class="form-label">Descripción</label>
                             <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" />
@@ -102,7 +103,7 @@
 
                             </asp:UpdatePanel>
                        
-                            <asp:Button Text="Desactivar" ID="btnInactivar" runat="server" CssClass="btn btn-warning px-4" CausesValidation="false" />
+                            <asp:Button Text="Desactivar" ID="btnInactivar" runat="server" CssClass="btn btn-warning px-4" CausesValidation="false" OnClick="btnInactivar_Click" />
 
                             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary px-4" OnClick="btnCancelar_Click" CausesValidation="false" />
 
