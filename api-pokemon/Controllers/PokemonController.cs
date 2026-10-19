@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using DominioPokemon ; 
 using NegocioPokemon ; 
+using api_pokemon.Models ;
 
 namespace api_pokemon {
     public class PokemonController : ApiController {
@@ -28,8 +29,28 @@ namespace api_pokemon {
         }
 
         // POST: api/Pokemon
-        public void Post([FromBody]string value)
-        {
+        public void Post([FromBody]PokemonDto poke) {
+
+        PokemonNegocio negocio = new PokemonNegocio() ;
+        
+        Pokemon nuevo = new Pokemon() ; 
+
+        nuevo.Nombre = poke.Nombre ; 
+
+        nuevo.Descripcion = poke.Descripcion ; 
+
+        nuevo.ImagenUrl = poke.ImagenUrl ;
+
+        nuevo.Numero = poke.Numero ; 
+
+        nuevo.Tipo = new Elemento { Id=poke.IdTipo } ;
+        
+        nuevo.Debilidad = new Elemento { Id = poke.IdDebilidad } ;
+        
+        negocio.agregar(nuevo) ;
+
+            
+
         }
 
         // PUT: api/Pokemon/5
