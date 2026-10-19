@@ -18,9 +18,13 @@ namespace api_pokemon {
             return negocio.listar() ; }
 
         // GET: api/Pokemon/5
-        public string Get(int id)
-        {
-            return "value";
+        public Pokemon Get(int id) {
+
+            PokemonNegocio negocio = new PokemonNegocio() ;
+
+            List<Pokemon> lista = negocio.listar() ;
+
+            return lista.Find(x => x.Id == id);
         }
 
         // POST: api/Pokemon
