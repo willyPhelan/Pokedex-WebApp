@@ -54,13 +54,41 @@ namespace api_pokemon {
         }
 
         // PUT: api/Pokemon/5
-        public void Put(int id, [FromBody]string value)
-        {
+        public void Put(int id, [FromBody]PokemonDto poke){
+
+
+        PokemonNegocio negocio = new PokemonNegocio() ;
+        
+        Pokemon nuevo = new Pokemon() ; 
+
+        nuevo.Nombre = poke.Nombre ; 
+
+        nuevo.Descripcion = poke.Descripcion ; 
+
+        nuevo.ImagenUrl = poke.ImagenUrl ;
+
+        nuevo.Numero = poke.Numero ; 
+
+        nuevo.Tipo = new Elemento { Id=poke.IdTipo } ;
+        
+        nuevo.Debilidad = new Elemento { Id = poke.IdDebilidad } ;    
+        
+        nuevo.Id = id ;
+
+
+        negocio.modificar(nuevo) ;
+       
+
         }
 
         // DELETE: api/Pokemon/5
-        public void Delete(int id)
-        {
+        public void Delete(int id){
+
+        PokemonNegocio negocio = new PokemonNegocio() ; 
+
+        negocio.eliminarLogico(id) ;
+
+
         }
     }
 }
